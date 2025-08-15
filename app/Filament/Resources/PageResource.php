@@ -8,6 +8,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Filament\Schemas\Schema;
+use Filament\Infolists\Components\TextEntry;
 
 class PageResource extends Resource
 {
@@ -21,14 +23,24 @@ class PageResource extends Resource
                 TextColumn::make('page_type')->label('Type')->sortable(),
                 TextColumn::make('created_at')->dateTime()->sortable(),
             ])
-            ->actions([
-                Tables\Actions\ViewAction::make()
-                    ->modalHeading('Extracted Content')
-                    ->modalContent(fn (PageModel $record) => view('filament.pages.partials.view-cleaned', [
-                        'record' => $record,
-                    ])),
-            ])
+            ->recordUrl(fn (PageModel $record) => static::getUrl('view', ['record' => $record]))
             ->defaultSort('created_at', 'desc');
+    }
+
+    public static function infolist(Schema $schema): Schema
+    {
+        return $schema
+            ->schema([
+                TextEntry::make('url')->label('URL')->copyable()->columnSpanFull(),
+                TextEntry::make('page_type')->label('Type'),
+                TextEntry::make('status')->label('Status'),
+                TextEntry::make('meta.title')->label('Title')->placeholder('-'),
+                TextEntry::make('cleaned_text')
+                    ->label('Content')
+                    ->copyable()
+                    ->columnSpanFull()
+                    ->extraAttributes(['style' => 'white-space: pre-wrap;']),
+            ]);
     }
 
     public static function getPages(): array
@@ -39,3 +51,4 @@ class PageResource extends Resource
         ];
     }
 }
+

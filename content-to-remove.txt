@@ -1,0 +1,1978 @@
+var campaigns = {"1":{"id":1,"
+ 
+
+ 
+ 
+ 
+ 
+ window.addEventListener("load", function(){
+ EF.click({
+ offer_id: EF.urlParameter("oid") || EF.urlParameter("offer_id"),
+ affiliate_id: EF.urlParameter("affid") || EF.urlParameter("aff_id"),
+ sub1: EF.urlParameter("sub1") || EF.urlParameter("aff_sub"),
+ sub2: EF.urlParameter("sub2") || EF.urlParameter("aff_sub2"),
+ sub3: EF.urlParameter("sub3") || EF.urlParameter("aff_sub3"),
+ sub4: EF.urlParameter("sub4") || EF.urlParameter("aff_sub4"),
+ sub5: EF.urlParameter("sub5") || EF.urlParameter("aff_sub5"),
+ uid: EF.urlParameter("uid") || EF.urlParameter("url_id"),
+ source_id: EF.urlParameter("source_id"),
+ transaction_id: EF.urlParameter("_ef_transaction_id"),
+ }).then(function(){
+ EF.conversion({
+ aid: 503,
+ adv_event_id: 2,
+ }) 
+ 
+ });
+ });
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ EARLY BIRD DEAL – GET 50% OFF
+
+ NEW IN FOR 2025 - EXCLUSIVE OFFER
+
+ EARLY BIRD DEAL - GET 50% OFF
+
+ NEW IN FOR 2025 - EXCLUSIVE OFFER
+
+ EARLY BIRD DEAL - GET 50% OFF
+
+ NEW IN FOR 2025 - EXCLUSIVE OFFER
+
+ EARLY BIRD DEAL - GET 50% OFF
+
+ NEW IN FOR 2025 - EXCLUSIVE OFFER
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ Overview
+ Features
+ Reviews
+ FAQs
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ Overview
+ Features
+ Reviews
+ FAQs
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 4.8/5 (12,421 verified reviews)
+ 
+
+ 
+
+ 
+ The Viral Cutting Tool That
+
+ Slices Through 100+ Materials
+ 
+
+ Cut Through Anything in Seconds – No Cords, No Effort
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ Precision Cutting in Seconds
+
+ 
+
+ 
+ 
+ Glides Through Thick Materials
+
+ 
+
+ 
+ 
+ Cordless and Rechargeable
+
+ 
+
+ 
+ 
+ Ergonomic, No-Cramp Grip
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ “Simple and effective. One button is all it takes—no setup, no hassle,
+ just real relief. I use it every day.”
+ 
+
+ 
+
+ 
+ 
+ Mark T., California / Verified Buyer
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ Ships by
+ 16th Aug | Stock Levelslow
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ As Seen On
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Replace Half Your Toolbox with 
+
+ Tactical Electric Scissors
+ 
+
+ 
+ Cut through over 100 materials like butter with the Tactical
+ Electric Scissors
+ and get ready to cut like a pro the first time, every time.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ Cuts the Tough Stuff Cleanly
+ 
+
+ 
+ From thick cardboard to plastic clamshells and
+ carpet, Tactical Electric
+ Scissors powers through materials that regular
+ scissors can’t handle — all with
+ a single squeeze.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ Cordless Freedom,
+ Anywhere You Work
+ 
+
+ 
+ No outlets? No problem. The rechargeable battery
+ delivers hours of cutting
+ power, giving you total flexibility in your
+ garage, workshop, or on-the-go.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ Built to End Hand Fatigue
+ 
+
+ 
+ Lightweight and ergonomically designed, Tactical Electric Scissors glides
+ without straining your hands — even during long
+ cutting sessions.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ Always Sharp, 
+ Always Ready
+ 
+
+ 
+ Integrated self-sharpening blades mean you’ll never slow down. Each cut stays
+ crisp and clean — no snags, no stops.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ OFF
+ 
+ Ships by
+ 16th Aug | Stock Levelslow
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ Cut Virtually Anything with Ease in Just 3 Easy Steps
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 1
+
+ 
+ 
+ Charge It Up
+ 
+
+ 
+ Plug in your Tactical Electric Scissors and let it fully charge for max
+ power.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 2
+
+ 
+ 
+ Choose Your Material
+ 
+
+ 
+ Whether it’s cardboard, plastic, or fabric, line up your cut — no need to
+ mark or measure twice.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 3
+
+ 
+ 
+ Press and Cut
+ 
+
+ 
+ Pull the trigger and glide through your material. Smooth, clean cuts every
+ time. Zero effort.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 1
+
+ 
+ 
+ Charge It Up
+ 
+
+ 
+ Plug in your Tactical Electric Scissors and let it fully charge for max
+ power.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 2
+
+ 
+ 
+ Choose Your Material
+ 
+
+ 
+ Whether it’s cardboard, plastic, or fabric, line up your cut — no need
+ to mark or measure twice.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 3
+
+ 
+ 
+ Press and Cut
+ 
+
+ 
+ Pull the trigger and glide through your material. Smooth, clean cuts
+ every
+ time. Zero effort.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ OFF
+ 
+ Ships by
+ 16th Aug | Stock Levelslow
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Designed by Pros, Built for Everyone—from Beginners to
+ Experts
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ Precision-Milled Cutting
+ Head
+
+ 
+ Engineered for clean, accurate cuts
+ across dozens
+ of materials — from
+ delicate
+ fabric to thick composites —
+ with zero drag or
+ blade flex.
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ High-Efficiency 10,000
+
+ RPM Motor
+
+ 
+ Delivers consistent torque across
+ every cut. No
+ stalls, no strain, even on
+ dense
+ or layered materials.
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ Dual-Speed Trigger Control
+
+ 
+ Variable speed lets you adjust to the
+ material in
+ real time — slow and steady
+ for details, full power when speed matters.
+ 
+
+ 
+
+ 
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+ Aircraft-Grade Housing
+
+ 
+ Impact-resistant body built for workshop abuse,
+ but balanced and lightweight for
+ long sessions at the craft table.
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 5 Powerful Uses
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ Viral on Tiktok
+ 
+
+ 
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 👉
+ 
+ Ships by
+ 16th Aug | Stock Levelslow
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 30-Day Money-Back Guarantee
+
+ 
+ We're confident you’ll love Tactical Electric Scissors like thousands of our valued customers. However, in the unlikely case you are not satisfied, just return the package within 30 days for a
+ refund, no questions asked.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Hear What Real Users are Saying
+ 
+
+ 
+ Real Reviews from Customers Who’ve Experienced the Tactical Difference
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Alicia R.
+ 
+
+ 
+ 
+ 42, Texas
+ 
+
+ 
+
+ 
+ 
+ Jun 30, 2025
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Jun 30, 2025
+
+ 
+
+ Cuts through everything!
+
+ 
+ I’ve used this on cardboard, plastic clamshells, fabric—you name it. It powers through
+ like butter. Replaced my box cutter for sure.
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Don M.
+ 
+
+ 
+ 
+ 36, Florida
+ 
+
+ 
+
+ 
+ 
+ Jun 20, 2025
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Jun 20, 2025
+
+ 
+
+ Finally, no hand cramps
+
+ 
+ As someone with arthritis, this tool is a dream. I can cut for long stretches without
+ any discomfort at all.
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Jenna L.
+ 
+
+ 
+ 
+ 28, Washington
+ 
+
+ 
+
+ 
+ 
+ Jun 24, 2025
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Jun 24, 2025
+
+ 
+
+ Battery lasts forever
+
+ 
+ I was shocked how long the battery lasted. I used it on and off for two full days
+ without recharging!
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Marie S.
+ 
+
+ 
+ 
+ 57, Ohio
+ 
+
+ 
+
+ 
+ 
+ Jun 12, 2025
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Jun 12, 2025
+
+ 
+
+ Perfect for Crafting
+
+ 
+ I make quilts and cut a lot of fabric. This thing has saved my wrists and sped up my
+ workflow. Love it!
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Kevin D.
+ 
+
+ 
+ 
+ 30, New York
+ 
+
+ 
+
+ 
+ 
+ Jun 07, 2025
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Jun 07, 2025
+
+ 
+
+ Great for packaging
+
+ 
+ Unboxing used to be a hassle. Now I slice open boxes and those annoying plastic packages
+ in seconds.
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Trina W.
+ 
+
+ 
+ 
+ 67, Oregon
+ 
+
+ 
+
+ 
+ 
+ Jun 13, 2025
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Jun 13, 2025
+
+ 
+
+ Sharp every single time
+
+ 
+ The built-in sharpener is genius. Every time I use it, the blades feel brand new.
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Barry K.
+ 
+
+ 
+ 
+ 24, Illinois
+ 
+
+ 
+
+ 
+ 
+ Jun 16, 2025
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Jun 16, 2025
+
+ 
+
+ Safe and Easy
+
+ 
+ The safety lock makes me feel good leaving it in my workshop around the kids. Plus it’s
+ super easy to use.
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ Sasha P.,
+ 
+
+ 
+ 
+ 49, California
+ 
+
+ 
+
+ 
+ 
+ Jun 14, 2025
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Jun 14, 2025
+
+ 
+
+ Worth every penny!!
+
+ 
+ I hesitated at first, but wow — this is one of the best tools I’ve bought. It paid for
+ itself in a week.
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Get uP TO 50% OFF
+ 👉
+ 
+ Ships by
+ 16th Aug | Stock Levelslow
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 🔥 50% Off Today Only!
+ 
+
+ 
+ CUT FASTER, SMOOTHER,
+
+ SAFER - NOW 50% OFF
+ 
+
+ 
+ 
+ Power, Precision, and Zero Hand Strain
+
+ 
+
+ 
+ No More Jagged Edges
+
+ 
+
+ 
+ Recharge Once, Cut All Day
+
+ 
+
+ 
+ Handles Tight Angles Easily
+
+ 
+
+ 
+ 
+ 
+ Power, Precision, and Zero Hand Strain
+
+ 
+
+ 
+ No More Jagged Edges
+
+ 
+
+ 
+ Recharge Once, Cut All Day
+
+ 
+
+ 
+ Handles Tight Angles Easily
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ 
+ 
+ Frequently Asked Questions
+ 
+
+ 
+
+ 
+ 
+ 
+ Q: How long will 
+ 
+
+ 
+ 
+ 
+ This is an American-owned business that doesn't believe it should take 45 days to
+ receive your product from China. Orders are sent from our New Jersey warehouse via USPS,
+ FedEx, UPS, or DHL for international customers depending on speed and efficiency of
+ delivery. Product will be shipped within 48 business hours. Please allow between 5-7
+ days for standard delivery. You will be emailed a tracking link after your order is
+ shipped. Thank you for your purchase!
+ 
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Q: How does the money back guarantee work?
+ 
+
+ 
+ 
+ Simply return your product and we'll give you a refund for 30 days.
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Q: What materials can it cut?
+ 
+
+ 
+ 
+ Tactical Electric Scissors can handle over 100 materials, including cardboard, fabric,
+ leather, plastic packaging, rubber, carpet, and even some soft metals.
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Q: How long does the battery last?
+ 
+
+ 
+ 
+ A full charge delivers up to 3 hours of continuous cutting, making it perfect for long
+ projects or multiple jobs without needing to recharge.
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Q: Is it safe to use around kids or pets?
+ 
+
+ 
+ 
+ Yes. Tactical Electric Scissors features a built-in safety lock switch that prevents
+ accidental activation, so you can store it with peace of mind.
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Q: Does it come with replacement blades?
+ 
+
+ 
+ 
+ Each unit includes an extra blade, and thanks to the self-sharpening system, you won’t need
+ to replace blades often — if at all.
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Q: How heavy is the tool?
+ 
+
+ 
+ 
+ Tactical Electric Scissors weighs less than a pound, making it lightweight enough for
+ extended use without causing hand or wrist strain.
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Q: Is it comfortable for left-handed users?
+ 
+
+ 
+ 
+ Absolutely! The ambidextrous design and ergonomic grip make it comfortable and easy to use
+ for both right- and left-handed people.
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+ 
+ Get uP TO 50% OFF
+ 👉
+ 
+ Ships by
+ 16th Aug | Stock Levelslow
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ var app_current_step = {"id":1,"configId":1,"goto":"
+ var app_query_params = {"C1":"1580","uid":"14768","oid":"1580","affid":"1267","AFFID":"1267","utm_campaign":"CPA_1267","utm_source":"1267"};
+ 
+
+ AJAX_PATH="ajax.php/"; app_config={"valid_class":"no-error","error_class":"has-error","loading_class":"loading","exit_popup_enabled":false,"exit_popup_element_id":"","exit_popup_page":"","offer_path":"\/offer\/1\/","current_step":1,"cbtoken":"7b639adf38026a866d8f86bd11b36391","dev_mode":"N","show_validation_errors":"modal","allowed_tc":"8\"m4l4d4J454k454O0lv8sm\"l\"d4J454k454O4l481mvlsd\"J\"57k756O6l080m0l0daJe5\"k\"57O7l686m0l0d0J15ake5\"O\"l187m0l0d0J050k05vOsl\"8[r1j4V4H4q4h4k4R4X|Niraj,V1H4q4h4k4R4X4N4r|jiVaH,q3h2k2R1X0N0r0j0V|Hmqxh,k3R2X2N1r0j0V0H0q|hmkxR,X4N4r2j0V0H0q0h0k|RiXaN]","allowed_country_codes":["CA","US"],"countries":{"CA":{"name":"Canada","states":{"AB":{"name":"Alberta"},"BC":{"name":"British Columbia"},"MB":{"name":"Manitoba"},"NB":{"name":"New Brunswick"},"NL":{"name":"Newfoundland and Labrador"},"NT":{"name":"Northwest Territories"},"NS":{"name":"Nova Scotia"},"NU":{"name":"Nunavut"},"ON":{"name":"Ontario"},"PE":{"name":"Prince Edward Island"},"QC":{"name":"Quebec"},"SK":{"name":"Saskatchewan"},"YT":{"name":"Yukon"}}},"US":{"name":"United States","states":{"AL":{"name":"Alabama"},"AK":{"name":"Alaska"},"AS":{"name":"American Samoa"},"AZ":{"name":"Arizona"},"AR":{"name":"Arkansas"},"CA":{"name":"California"},"CO":{"name":"Colorado"},"CT":{"name":"Connecticut"},"DE":{"name":"Delaware"},"DC":{"name":"District of Columbia"},"FM":{"name":"Federated States of Micronesia"},"FL":{"name":"Florida"},"GA":{"name":"Georgia"},"GU":{"name":"Guam"},"HI":{"name":"Hawaii"},"ID":{"name":"Idaho"},"IL":{"name":"Illinois"},"IN":{"name":"Indiana"},"IA":{"name":"Iowa"},"KS":{"name":"Kansas"},"KY":{"name":"Kentucky"},"LA":{"name":"Louisiana"},"ME":{"name":"Maine"},"MD":{"name":"Maryland"},"MA":{"name":"Massachusetts"},"MI":{"name":"Michigan"},"MN":{"name":"Minnesota"},"MS":{"name":"Mississippi"},"MO":{"name":"Missouri"},"MT":{"name":"Montana"},"NE":{"name":"Nebraska"},"NV":{"name":"Nevada"},"NH":{"name":"New Hampshire"},"NJ":{"name":"New Jersey"},"NM":{"name":"New Mexico"},"NY":{"name":"New York"},"NC":{"name":"North Carolina"},"ND":{"name":"North Dakota"},"MP":{"name":"Northern Mariana Islands"},"OH":{"name":"Ohio"},"OK":{"name":"Oklahoma"},"OR":{"name":"Oregon"},"PA":{"name":"Pennsylvania"},"PR":{"name":"Puerto Rico"},"MH":{"name":"Republic of Marshall Islands"},"RI":{"name":"Rhode Island"},"SC":{"name":"South Carolina"},"SD":{"name":"South Dakota"},"TN":{"name":"Tennessee"},"TX":{"name":"Texas"},"UT":{"name":"Utah"},"VT":{"name":"Vermont"},"VI":{"name":"Virgin Islands of the U.S."},"VA":{"name":"Virginia"},"WA":{"name":"Washington"},"WV":{"name":"West Virginia"},"WI":{"name":"Wisconsin"},"WY":{"name":"Wyoming"}}}},"country_lang_mapping":{"US":{"state":"State:","zip":"Zip Code:"},"GB":{"state":"County:","zip":"Postal Code:"},"CA":{"state":"Province:","zip":"Postal Code:"},"IN":{"state":"State:","zip":"Pin:"}},"device_is_mobile":false,"pageType":"leadPage","enable_browser_back_button":false,"disable_trialoffer_cardexp":true,"enable_csrf_token":false}app_lang={"error_messages":{"zip_invalid":"Please enter a valid zip code!","email_invalid":"Please enter a valid email id!","cc_invalid":"Please enter a valid credit card number!","cvv_invalid":"Please enter a valid CVV code!","card_expired":"Card seems to have expired already!","card_expire_soon":"Your credit card is about to expire, please update your card information.","common_error":"Oops! Something went wrong! Can you please retry?","not_checked":"Please check the agreement box in order to proceed.","ca_zip_invalid":"Invalid Canada state code","xv_invalid_
+
+ var validator_data = {"enable_ca_statecode_validation":true,"ca_state_code_mask":"S0S 0S0","ca_state_code_regex":"^[A-Za-z]\\d[A-Za-z](\\s?\\d[A-Za-z]\\d)?$","us_state_code_mask":"00000","enable_statecode_validation":true,"enable_us_statecode_validation":true};
+ 
+
+var input_mask_data = {"enable_masking":true,"masking_device":["desktop","mobile"],"credit_card_place_holder_active":false,"credit_card_masking_placeholder":"","credit_card_masking":"","phone_number_masking":"+1 (999) 999-9999","enable_credit_Card_masking":false};
+
+$(function(){$.get("/offer/1/ajax.php/extensions/checktrafficnew/initialize");}); 
+ $(function(){
+
+ setTimeout(function(){
+ $.get("/offer/1/ajax.php/extensions/checktrafficnew/place", function( data ) {
+ if(data == null) return;
+ 
+ if(typeof data == 'string') {
+ data = JSON.parse(data);
+ }
+ 
+ data.forEach(function(el) {
+ 
+ if(el.type == 'head') {
+ $('head').append(el.content);
+ }
+ 
+ if(el.type == 'top') {
+ $('body').prepend(el.content);
+ }
+ 
+ if(el.type == 'bottom') {
+ $('body').append(el.content);
+ }
+ });
+ });
+ }, 500);
+ 
+ });
+ 
+ 
+
+var restricted_countries= 'US,CA';
+
+let getCurrentStep=1;
+
+ let stickyCustomFieldId = '7';
+
+ let paymentMethods = ["paypal"];
+
+ let paymentMethods2 = Array;
+
+ 
+
+ let cardInsightEndPoint = 'https://securehost007.com/q/7be364f64021dfffa6573a18cb52a9d10913ecb5/';
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+ 
+ // ----------------- Next Page Loading Indicator -----------------
+function nextPage() {
+ $("#loading-indicator").show();
+ window.location.href = "
+ setTimeout(function () {
+ $("#loading-indicator").hide();
+ }, 1500);
+}
+
+// ----------------- Document Ready jQuery Initializations -----------------
+$(document).ready(function () {
+ // Accordion Toggle
+ $(".acdn-heading").click(function () {
+ $(this)
+ .toggleClass("active")
+ .next(".acdn-content")
+ .slideToggle()
+ .parent()
+ .siblings()
+ .find(".acdn-content")
+ .slideUp()
+ .prev()
+ .removeClass("active");
+ });
+
+ // Conveyor Ticker
+ $('.features_cntnr').jConveyorTicker({
+ anim_duration: 150,
+ reverse_elm: false,
+ force_loop: false,
+ start_paused: false
+ });
+
+ // Mobile Menu Toggle
+ $("#mobMenuBtn").click(function () {
+ $(this).toggleClass("dl-active");
+ $(".nav-rgt.nav-box").toggleClass("show");
+ });
+
+ // Owl Carousel: Feature Section
+ // $('.featureSec .owl-carousel').owlCarousel({
+ // center: true,
+ // items: 2,
+ // loop: true,
+ // margin: 10,
+ // responsive: {
+ // 575: {
+ // items: 4
+ // }
+ // }
+ // });
+
+ // Owl Carousel: Review Slider
+ $('.review-slider .owl-carousel').owlCarousel({
+ items: 1,
+ loop: true,
+ dots: true,
+ margin: 10,
+ responsive: {
+ 0: {
+ items: 1
+ },
+ 767: {
+ items: 2
+ },
+ 991: {
+ items: 3,
+ mouseDrag: false,
+ touchDrag: false
+ }
+ }
+ });
+
+ // Owl Carousel: Trip Slider
+ $('.trip-slider .owl-carousel').owlCarousel({
+ items: 1,
+ loop: true,
+ dots: true,
+ margin: 0,
+ responsive: {
+ 0: {
+ items: 1
+ },
+ 767: {
+ items: 3
+ },
+ 991: {
+ items: 5,
+ mouseDrag: false,
+ touchDrag: false
+ }
+ }
+ });
+
+ // Owl Carousel: TikTok Slider
+ $('.tiktok-slider .owl-carousel').owlCarousel({
+ items: 1,
+ loop: true,
+ dots: true,
+ margin: 40,
+ responsive: {
+ 0: {
+ items: 1,
+ margin: 20
+ },
+ 767: {
+ items: 2,
+ margin: 20
+ },
+ 991: {
+ items: 3,
+ mouseDrag: false,
+ touchDrag: false
+ }
+ }
+ });
+});
+
+// ----------------- Scroll Event for Sticky Nav & Mobile Menu Position -----------------
+$(document).scroll(function () {
+ if ($(this).scrollTop() > 40) {
+ $('.nav-bar').addClass('fixed-nav');
+ } else {
+ $('.nav-bar').removeClass('fixed-nav');
+ }
+
+ if ($(this).scrollTop() > 20) {
+ $('.nav-rgt.nav-box').addClass('mobimenu-top');
+ } else {
+ $('.nav-rgt.nav-box').removeClass('mobimenu-top');
+ }
+});
+
+// ----------------- Smooth Scroll for Anchor Navigation -----------------
+document.querySelectorAll('a[data-target]').forEach(link => {
+ link.addEventListener('click', function (e) {
+ e.preventDefault();
+ const targetId = this.getAttribute('data-target');
+ const section = document.getElementById(targetId);
+
+ if (section) {
+ section.scrollIntoView({ behavior: 'smooth' });
+
+ // Clean URL
+ history.replaceState(null, document.title, window.location.pathname);
+
+ // Hide mobile nav
+ const navBox = document.querySelector('.nav-rgt.nav-box');
+ if (navBox) {
+ navBox.classList.remove('show');
+ }
+
+ // Remove menu active state
+ const dlTrigger = document.querySelector('.dl-trigger');
+ if (dlTrigger) {
+ dlTrigger.classList.remove('dl-active');
+ }
+ }
+ });
+});
+
+// ----------------- Mobile Button Visibility Observer -----------------
+document.addEventListener("DOMContentLoaded", function () {
+ const topButton = document.getElementById("sec3-btn");
+ const bottomButton = document.getElementById("step-btn");
+
+ if (window.innerWidth {
+ entries.forEach((entry) => {
+ if (entry.isIntersecting) {
+ bottomButton.style.display = "none";
+ } else {
+ bottomButton.style.display = "flex";
+ }
+ });
+ },
+ {
+ root: null,
+ threshold: 0,
+ rootMargin: "-70px 0px 0px 0px"
+ }
+ );
+
+ if (topButton) {
+ observer.observe(topButton);
+ }
+ }
+});
+
+// ----------------- Hide Mobile Nav-Bar When Certain Sections Are Visible -----------------
+document.addEventListener("DOMContentLoaded", function () {
+ const targetIds = [
+ "mob-btn1",
+ "sec3-btn",
+ "step-btn",
+ "mob-btn4",
+ "mob-btn6"
+ ];
+
+ const navBar = document.querySelector("#nav-bar-section-mob .nav-bar");
+
+ function isElementMostlyInView(el, visibilityThreshold = 0.4) {
+ const rect = el.getBoundingClientRect();
+ const elementHeight = rect.height;
+ const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+ const visibleRatio = visibleHeight / elementHeight;
+ return visibleRatio >= visibilityThreshold;
+ }
+
+ function checkVisibility() {
+ let anyVisible = false;
+ for (let id of targetIds) {
+ const element = document.getElementById(id);
+ if (element && isElementMostlyInView(element)) {
+ anyVisible = true;
+ break;
+ }
+ }
+
+ if (navBar) {
+ navBar.style.setProperty("display", anyVisible ? "none" : "block", "important");
+ }
+ }
+
+ setTimeout(() => {
+ checkVisibility();
+ window.addEventListener("scroll", checkVisibility);
+ window.addEventListener("resize", checkVisibility);
+ }, 100);
+
+ // Delay autoplay by 2 seconds
+ setTimeout(function () {
+ $('.lazy-video').each(function () {
+ const video = $(this).get(0);
+ const source = document.createElement('source');
+ source.src = $(this).data('src');
+ source.type = 'video/mp4';
+ video.appendChild(source);
+ video.load(); // load after source is added
+ video.play(); // autoplay manually after load
+ video.setAttribute("autoplay", true);
+ video.setAttribute("loop", true);
+ });
+ }, 3000); // 2 seconds delay
+});
+
+(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96f553a46b8a4a4b',t:'MTc1NTIyNTYyMQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();

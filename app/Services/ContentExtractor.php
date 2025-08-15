@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use andreskrey\Readability\Configuration;
-use andreskrey\Readability\Readability;
 use GuzzleHttp\Client;
 use Masterminds\HTML5;
 use Symfony\Component\DomCrawler\Crawler;
@@ -22,25 +20,18 @@ class ContentExtractor
         ]);
         $html = (string) $response->getBody();
 
-        // Pre-clean obvious noise before readability
-        $html = $this->stripNoiseWithCrawler($html);
+        // Clean and reduce to <body> content only (remove HTML/JS)
+        $bodyHtml = $this->stripNoiseWithCrawler($html);
 
-        // Extract main content using Readability
-        $config = new Configuration();
-        $config->setFixRelativeURLs(true);
-        $config->setOriginalURL($url);
-        $readability = new Readability($config);
-        $readability->parse($html);
-
-        $contentHtml = $readability->getContent() ?? '';
-        $contentText = $this->toText($contentHtml);
+        // Convert to plaintext
+        $contentText = $this->toText($bodyHtml);
 
         // Post-clean CTA and footer related phrases
         $contentText = $this->removeCtaPhrases($contentText);
 
         return [
             'cleaned_text' => trim($contentText),
-            'title' => $readability->getTitle() ?: null,
+            'title' => $this->extractTitle($html),
         ];
     }
 
@@ -48,10 +39,11 @@ class ContentExtractor
     {
         $html5 = new HTML5();
         $dom = $html5->loadHTML($html);
-        $crawler = new Crawler($dom);
+        $body = $dom->getElementsByTagName('body')->item(0);
+        $crawler = new Crawler($body ?: $dom);
 
         $selectors = [
-            'script', 'style', 'noscript', 'form',
+            'script', 'style', 'noscript', 'template', 'svg', 'iframe', 'form',
             'header', 'nav', 'aside', 'footer',
             '.header', '.nav', '.navbar', '.menu', '.sidebar', '.breadcrumb',
             '.footer', '.subscribe', '.newsletter', '.cookie', '.banner',
@@ -80,18 +72,24 @@ class ContentExtractor
             }
         }
 
-        return $html5->saveHTML($dom);
+        // Return the cleaned <body> HTML (or whole document if <body> is missing)
+        return $html5->saveHTML($body ?: $dom);
     }
 
     private function toText(string $html): string
     {
         // Convert HTML to plaintext while preserving paragraphs
-        $text = preg_replace('/<\/(p|div|br|li)>/i', "$0\n", $html);
+        // First, normalize <br> tags to newlines
+        $text = preg_replace('/<br\s*\/?\s*>/i', "\n", $html);
+        // Add newlines after common block-level closing tags
+        $text = preg_replace('/<\/(p|div|li|section|article|h[1-6]|tr)>/i', "$0\n", $text);
         $text = strip_tags($text);
+        $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
         // Normalize whitespace
         $text = preg_replace('/\n{3,}/', "\n\n", $text);
         $text = preg_replace('/[\t\x{00A0}]+/u', ' ', $text);
-        $text = preg_replace('/\s{2,}/', ' ', $text);
+        // Collapse repeated spaces/tabs but preserve newlines
+        $text = preg_replace('/[ \t\x{00A0}]{2,}/u', ' ', $text);
         return trim($text);
     }
 
@@ -109,4 +107,17 @@ class ContentExtractor
         ];
         return preg_replace($patterns, '', $text) ?? $text;
     }
+
+    private function extractTitle(string $html): ?string
+    {
+        try {
+            $html5 = new HTML5();
+            $dom = $html5->loadHTML($html);
+            $titleNode = $dom->getElementsByTagName('title')->item(0);
+            return $titleNode ? trim($titleNode->textContent) : null;
+        } catch (\Throwable $e) {
+            return null;
+        }
+    }
 }
+

@@ -24,9 +24,9 @@ class ExtractContent extends FilamentPage implements HasForms
     // Filament forms store state in an array by default
     public ?array $data = [];
 
-    public function form(Schema $form): Schema
+    public function form(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 Forms\Components\TextInput::make('url')
                     ->label('Website URL')
@@ -40,7 +40,7 @@ class ExtractContent extends FilamentPage implements HasForms
 
     public function submit(): void
     {
-        $data = $this->form->getState();
+        $data = $this->data ?? [];
         $url = (string) ($data['url'] ?? '');
         if (! $url) {
             Notification::make()->title('Please provide a valid URL.')->danger()->send();
