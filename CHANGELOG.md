@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
+## [0.1.2] - 2025-08-15
+
+### Added
+- Unit tests for text conversion and CTA cleanup in `tests/Unit/ContentExtractorTest.php`.
+
+### Changed
+- Duplicate-safe storage for pages:
+  - Submission upserts by URL in `app/Filament/Pages/ExtractContent.php` (updates `cleaned_text` and `meta.title`, preserves `page_type`).
+  - DB migration adds unique index on `pages.url` and deduplicates existing rows by keeping the earliest id.
+- HTTP fetch guardrails in `app/Services/ContentExtractor.php`:
+  - Follow redirects; require 2xx status.
+  - Enforce HTML/XHTML `Content-Type` and 3MB max response size.
+
+### Documentation
+- README updated to reflect duplicate-safe storage, HTTP guardrails, and unit test instructions.
+
 ## [0.1.1] - 2025-08-15
 
 ### Changed

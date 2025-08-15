@@ -52,18 +52,24 @@ class ExtractContent extends FilamentPage implements HasForms
             $extractor = App::make(ContentExtractor::class);
             $result = $extractor->extract($url);
 
-            $page = PageModel::create([
-                'url' => $url,
-                'page_type' => null,
-                'status' => 'extracted',
-                'cleaned_text' => $result['cleaned_text'] ?? '',
-                'meta' => [
-                    'title' => $result['title'] ?? null,
-                ],
-            ]);
+            // Upsert by URL to avoid duplicates and preserve existing page_type
+            $page = PageModel::firstOrNew(['url' => $url]);
+            $wasExisting = $page->exists;
+
+            // Update content and meta title
+            $page->cleaned_text = $result['cleaned_text'] ?? '';
+            $meta = $page->meta ?? [];
+            $meta['title'] = $result['title'] ?? ($meta['title'] ?? null);
+            $page->meta = $meta;
+
+            if (! $wasExisting) {
+                $page->status = 'extracted';
+            }
+
+            $page->save();
 
             Notification::make()
-                ->title('Content extracted successfully')
+                ->title($wasExisting ? 'Content updated for existing URL' : 'Content extracted successfully')
                 ->success()
                 ->send();
 

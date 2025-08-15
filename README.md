@@ -18,6 +18,7 @@ Built for fast operator workflows in an admin panel, with copy-friendly views an
 - **Text cleaning**: Converts to plaintext, strips `<script>` blocks, preserves paragraphs/line breaks, removes tabs and collapses extra spaces; conservative CTA phrase cleanup.
 - **Filament v4 Admin**: Tables for quick review; record view shows copyable content with line breaks (nl2br) and normal whitespace (no pre-wrap).
 - **Ready for AI**: Data model and flow designed to plug prompts for interstitial/advertorial generation.
+ - **Duplicate-safe storage**: URL upsert prevents duplicate `pages` records; unique index on `pages.url`.
 
 ## Tech Stack
 
@@ -29,15 +30,17 @@ Built for fast operator workflows in an admin panel, with copy-friendly views an
 
 - `app/Services/ContentExtractor.php`
   - Fetches HTML via Guzzle
-  - Uses desktop UA header and a 20s timeout
+  - Uses desktop UA header and a 20s timeout; follows redirects
   - Limits to `<body>`, removes UI chrome; strips `<script>...</script>` before text conversion
   - Converts to plain text and applies `removeCtaPhrases()` (keeps FAQ `Q:`/`A:` lines; fallback `<script>` removal)
+  - Guardrails: require 2xx status, `Content-Type` HTML/XHTML, and <= 3MB body size
 - `app/Filament/Pages/ExtractContent.php`
-  - Simple form to submit a URL; creates a `Page` record
+  - Simple form to submit a URL; upserts a `Page` by URL (updates `cleaned_text` and `meta.title`, preserves `page_type`)
 - `app/Filament/Resources/PageResource.php`
   - List view with row click -> View page
   - Infolist shows URL, meta, and copyable `cleaned_text`
 - `app/Models/Page.php` with casts and fillables
+ - DB: unique index on `pages.url` (migration deduplicates existing rows by keeping earliest id)
 
 ## Getting Started (Windows/Laragon)
 
@@ -90,6 +93,7 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
 
 - Run tests: `php artisan test`
 - Code style: `./vendor/bin/pint`
+ - Unit-only: `vendor/bin/phpunit --testsuite Unit` (tests cover `toText()` and `removeCtaPhrases()` behaviors)
 
 ## Project Decisions
 

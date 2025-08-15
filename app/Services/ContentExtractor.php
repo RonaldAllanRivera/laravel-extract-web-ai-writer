@@ -10,15 +10,34 @@ class ContentExtractor
 {
     public function extract(string $url): array
     {
-        $client = new Client(['timeout' => 20]);
-
-        $response = $client->get($url, [
+        $client = new Client([
+            'timeout' => 20,
+            'allow_redirects' => true,
+            'http_errors' => false,
             'headers' => [
                 'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
                 'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
             ],
         ]);
-        $html = (string) $response->getBody();
+
+        $response = $client->get($url);
+
+        $status = $response->getStatusCode();
+        if ($status < 200 || $status >= 300) {
+            throw new \RuntimeException("Request failed (HTTP {$status}).");
+        }
+
+        $contentType = strtolower($response->getHeaderLine('Content-Type'));
+        if ($contentType && !str_contains($contentType, 'text/html') && !str_contains($contentType, 'application/xhtml+xml')) {
+            throw new \RuntimeException('The URL did not return HTML content.');
+        }
+
+        $body = $response->getBody();
+        $size = $body->getSize();
+        if ($size !== null && $size > 3 * 1024 * 1024) { // > 3 MB
+            throw new \RuntimeException('The page is too large to process.');
+        }
+        $html = (string) $body;
 
         // Clean and reduce to <body> content only (remove HTML/JS)
         $bodyHtml = $this->stripNoiseWithCrawler($html);
