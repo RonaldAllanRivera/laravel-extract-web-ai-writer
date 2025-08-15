@@ -74,6 +74,30 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
 - Open `Admin > Pages`, click a row to view.
 - Copy cleaned text from the View page.
 
+### AI generation settings
+
+- Defaults are configured in `config/ai.php` and can be overridden via `.env`.
+- Current defaults:
+  - `AI_MAX_OUTPUT_TOKENS=2200`
+  - `AI_INPUT_TOKEN_BUDGET=8000`
+- Optional `.env` overrides:
+
+```dotenv
+AI_MAX_OUTPUT_TOKENS=2200
+AI_INPUT_TOKEN_BUDGET=8000
+AI_LAYOUT_INTERSTITIAL_MAX_TOKENS=2200
+```
+
+After changing config or `.env`, clear caches:
+
+```bash
+php artisan config:clear
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+php artisan optimize
+```
+
 ### Admin bulk actions (Pages list)
 
 - **Re-clean selected**
@@ -93,18 +117,27 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
 ### CLI utilities
 
 - Re-clean existing records (no refetch):
-
+  
   ```bash
   php artisan pages:reclean
   ```
-
-- Refetch from the network and re-clean:
-
+  
+ - Refetch from the network and re-clean:
+  
   ```bash
   php artisan pages:reclean --refetch
   ```
   - Records fetch metadata on success and failure (`last_fetched_at`, `http_status`, `content_length`, `fetch_error`).
 
+### Exporting generated contents (SQL)
+
+- Use mysqldump to avoid GUI truncation when exporting long `LONGTEXT` values:
+
+```bash
+mysqldump -u <user> -p --default-character-set=utf8mb4 --skip-extended-insert --no-tablespaces <database> generated_contents > generated_contents-full.sql
+```
+
+- If using HeidiSQL, use “Export database as SQL” and ensure no text-length limits are enabled. Avoid copying rows from the grid, which may show truncated previews.
 ### Pages list tips
 
 - Use the `HTTP` badge color to quickly spot failures (red for non-2xx, gray for unknown).

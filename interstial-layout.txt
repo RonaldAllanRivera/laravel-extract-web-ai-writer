@@ -1,0 +1,103 @@
+Change all the product name "Vita Feet Relieve" to {{productName}}
+Please craft a fresh and high-impact content, make sure its impactful and better than the old content, here is the text layout structure that I want:
+
+1. Create a short headline, containing the main product benefit. (Limit to 8 words) 
+Example:
+Transforms Any Garden Hose Into A Power Washer
+
+2. The X-factor of our product.
+Example:
+Sub-Title (it should be different with headline): Transforms Any Garden Hose Into A Power Washer
+Body: The {{productName}} Power Nozzle delivers high-pressure cleaning with ease, designed for versatile use across multiple surfaces.
+
+3: A mix between the main product benefits & features (with a focus on benefits). 4 to 6 lines.
+Example:
+- 5X water pressure boost
+- 2 spraying modes: Jet & Fan
+- Corrosion & rust-resistant
+- Lightweight, portable & leakproof
+- Ergonomic anti-slip sponge handle
+- Saves water, energy & effort
+
+4. A quote from a relevant authority
+Example:
+Testimonial Title: "A must-have tool for effortless, high-pressure cleaning" (no need to add double quotes)
+Testimonial Body: "I was doubtful at first, but after using the {{productName}} Power Nozzle for a few weeks, I'm thoroughly impressed. It’s incredibly lightweight yet powerful enough to blast away dirt and grime without any extra effort. From washing my car to cleaning the patio, it saves me so much time and energy. I now recommend it to anyone who wants a hassle-free, effective cleaning solution for their home or business." (no need to add double quotes)
+David Kim (Use Generic Name) | Commercial Property Manager
+
+5. The X-Factor, but in long text format.
+Example:
+Title: Introducing {{productName}}
+Sub-title: The Smarter Way to Powerful, Efficient Cleaning
+Body:
+{{productName}} transforms any standard garden hose into a high-pressure power washer—delivering professional-grade cleaning at home.
+
+With its innovative design, {{productName}} boosts water pressure by 5X, making tough cleaning tasks effortless. It features two specialized spraying modes: Jet Mode for deep, concentrated cleaning and Fan Mode for balanced coverage over larger areas.
+
+Crafted from lightweight, corrosion-resistant materials, it’s built for durability and portability—perfect for washing cars, patios, gardens, and more. The ergonomic, anti-slip handle ensures a comfortable grip, even at high pressure.
+
+{{productName}} not only saves water, energy, and time but also eliminates the need for expensive power washers, offering a smarter, more efficient solution for all your cleaning needs.
+
+6. Represent 4 of the biggest benefits/features (focus on benefits).
+Example:
+Features Title: The Only Tool You’ll Ever Need for Powerful, Efficient Cleaning
+Features Body: {{productName}} makes cleaning faster and easier—perfect for cars, patios, gardens, and more. Designed for durability and comfort, it delivers professional results without the hassle.
+Features blocks (max. 35 characters):
+- 5X Water Pressure Boost
+- 2 Spraying Modes: Jet & Fan
+- Lightweight & Portable
+- Saves Water & Energy
+
+7. Add a content with the headline should always say “Meet <productname>”. Introduce the product again, repeat the X-factor. 
+Example:
+Title: Meet PestPulse Pro
+Body: Get rid of mosquitoes, fruit flies, moths, gnats, flying beetles and more!
+
+We reverse engineered common mosquito-killing devices, and discovered something they were all missing. Most use a scattergun approach to killing mosquitoes, emitting a broad spectrum of light in the hope it attracts them.
+And after years of research, **we pinpointed the exact frequency of UV light that attracts bugs like magnets.**
+
+The result is our patented FlashBeam Technology: an invention that kills pesky bugs and mosquitoes like nothing else on the market.
+So you can finally enjoy the outdoors again.
+
+8: List the 2 biggest Unique Selling Point and write about them. 2 paragraphs each.
+Example:
+Title: Portable and Rechargeable
+Body: Thanks to the rechargeable, long-lasting battery, PestPulse Pro can last up to 24 hours once fully charged. Simply use the included USB cable, or use a computer or mobile charger.
+
+And it even has a built-in solar panel, making it perfect for your camping trips.
+
+9. One of the benefits (4 to 6 words).
+Example:
+Powerful Cleaning. Effortless Performance.
+
+10. Features with 6 items with a short sentence under it. This is the place where “boring” tech features should be listed.
+Example:
+Features Body: Transform Your Cleaning Routine Today at an Unbeatable Price!
+Features List:
+PressureBoost Technology
+Delivers 5X the water pressure for deep, efficient cleaning without extra effort.
+
+Dual Spray Modes
+Choose between a Jet Stream for stubborn stains or a Fan Spray for wide area coverage.
+
+Ultra-Lightweight Design
+Light enough for anyone to handle, reducing fatigue during extended use.
+
+11. A simple “1-2-3” of how the product works. There is an optional sentence below this region that you can use to write something relevant.
+Example:
+Steps Body: Transform Your Cleaning Routine Today at an Unbeatable Price!
+List of Steps:
+Step 1: Attach the {{productName}} Power Nozzle
+Step 2: Select Your Cleaning Mode
+Step 3: Start Cleaning with 5X Pressure
+
+12. 8 testimonials, use generic names.
+Example:
+Olivia Martinez
+{{productName}} made cleaning my patio furniture effortless. The pressure is incredible, and switching between spray modes is so simple. It’s now my go-to tool for all outdoor cleaning tasks! (no need to add double quotes)
+
+13. The FAQ should not contain questions about shipping. Questions or answers should never put the product in bad daylight.
+Example:
+How long is the {{productName}} Power Nozzle?
+The {{productName}} Power Nozzle measures 18 inches in length, offering the perfect balance between reach and maneuverability. Its extended design allows you to clean those hard-to-reach areas effortlessly, delivering high-pressure performance exactly where you need it.
+

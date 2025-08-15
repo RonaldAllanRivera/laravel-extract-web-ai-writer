@@ -15,6 +15,7 @@ use Filament\Notifications\Notification;
 use Illuminate\Support\Collection;
 use Filament\Actions\BulkAction;
 use Illuminate\Support\Str;
+use App\Support\AiContentFormatter;
 
 class PageResource extends Resource
 {
@@ -150,6 +151,36 @@ class PageResource extends Resource
                     ->columnSpanFull()
                     ->html()
                     ->formatStateUsing(fn ($state) => nl2br(e($state))),
+                TextEntry::make('ai_interstitial')
+                    ->label('AI Interstitial')
+                    ->placeholder('-')
+                    ->state(function (PageModel $record) {
+                        $gc = $record->generatedContents()
+                            ->where('layout', 'interstitial')
+                            ->where('status', 'success')
+                            ->latest()
+                            ->first();
+                        return $gc?->content;
+                    })
+                    ->copyable()
+                    ->columnSpanFull()
+                    ->html()
+                    ->formatStateUsing(fn ($state) => $state ? AiContentFormatter::toHtmlTable($state, 'interstitial') : null),
+                TextEntry::make('ai_advertorial')
+                    ->label('AI Advertorial')
+                    ->placeholder('-')
+                    ->state(function (PageModel $record) {
+                        $gc = $record->generatedContents()
+                            ->where('layout', 'advertorial')
+                            ->where('status', 'success')
+                            ->latest()
+                            ->first();
+                        return $gc?->content;
+                    })
+                    ->copyable()
+                    ->columnSpanFull()
+                    ->html()
+                    ->formatStateUsing(fn ($state) => $state ? AiContentFormatter::toHtmlTable($state, 'advertorial') : null),
             ]);
     }
 

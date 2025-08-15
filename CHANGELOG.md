@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
+## [0.1.4] - 2025-08-15
+
+### Changed
+- Increase AI output token defaults in `config/ai.php`: `max_output_tokens` 2200, `input_token_budget` 8000.
+- Per-layout defaults: `layouts.interstitial.max_output_tokens` 2200, `layouts.advertorial.max_output_tokens` 2200.
+
+### Fixed
+- Interstitial table rendering: convert single-asterisk emphasis `*text*` to `<em>` in `AiContentFormatter::toHtmlTable()` so lines like `*Feel the difference with every session!*` render correctly.
+
+### Documentation
+- README: add AI generation settings, cache clear commands, and export guidance (mysqldump/HeidiSQL).
+- `.env.example`: update token defaults and set `AI_LAYOUT_INTERSTITIAL_MAX_TOKENS=2200`.
+
 ## [0.1.3] - 2025-08-15
 
 ### Added
