@@ -39,7 +39,8 @@ class PageResource extends Resource
                     ->label('Content')
                     ->copyable()
                     ->columnSpanFull()
-                    ->extraAttributes(['style' => 'white-space: pre-wrap;']),
+                    ->html()
+                    ->formatStateUsing(fn ($state) => nl2br(e($state))),
             ]);
     }
 

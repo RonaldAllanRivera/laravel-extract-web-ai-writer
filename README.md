@@ -15,8 +15,8 @@ Built for fast operator workflows in an admin panel, with copy-friendly views an
 
 - **Source-first extraction**: Reads HTML source only (no client JS required) to avoid missing text hidden behind accordions/UI.
 - **Noise removal**: Drops scripts, styles, nav/footer, templates, SVG/iframes; trims obvious CTA elements.
-- **Text cleaning**: Converts to plaintext with preserved paragraphs/line breaks and CTA phrase stripping.
-- **Filament v4 Admin**: Tables for quick review; record view shows copyable, pre-wrapped text.
+- **Text cleaning**: Converts to plaintext, strips `<script>` blocks, preserves paragraphs/line breaks, removes tabs and collapses extra spaces; conservative CTA phrase cleanup.
+- **Filament v4 Admin**: Tables for quick review; record view shows copyable content with line breaks (nl2br) and normal whitespace (no pre-wrap).
 - **Ready for AI**: Data model and flow designed to plug prompts for interstitial/advertorial generation.
 
 ## Tech Stack
@@ -29,8 +29,9 @@ Built for fast operator workflows in an admin panel, with copy-friendly views an
 
 - `app/Services/ContentExtractor.php`
   - Fetches HTML via Guzzle
-  - Limits to `<body>`, removes HTML/JS/UI chrome
-  - Converts to plain text and applies `removeCtaPhrases()`
+  - Uses desktop UA header and a 20s timeout
+  - Limits to `<body>`, removes UI chrome; strips `<script>...</script>` before text conversion
+  - Converts to plain text and applies `removeCtaPhrases()` (keeps FAQ `Q:`/`A:` lines; fallback `<script>` removal)
 - `app/Filament/Pages/ExtractContent.php`
   - Simple form to submit a URL; creates a `Page` record
 - `app/Filament/Resources/PageResource.php`
@@ -64,6 +65,27 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
 - Open `Admin > Pages`, click a row to view.
 - Copy cleaned text from the View page.
 
+## Cleaning rules
+
+- Remove entire nodes likely to be chrome/noise in DOM stage: `script`, `style`, `noscript`, `template`, `svg`, `iframe`, `form`, and common layout containers (`header`, `nav`, `aside`, `footer`, `.header`, `.nav`, `.navbar`, `.menu`, `.sidebar`, `.breadcrumb`, `.footer`, `.subscribe`, `.newsletter`, `.cookie`, `.banner`, ARIA roles banner/navigation/contentinfo).
+- Drop CTA-like nodes during DOM pass for `a`, `button`, submit inputs, and `.btn` whose text matches: `order now`, `buy now`, `add to cart`, `checkout`, `discount`, `coupon`, `shipping`, `free shipping`, `limited time`, `save <n>%`.
+- Text pipeline:
+  - Strip any remaining `<script>...</script>` blocks.
+  - Convert `<br>` to newlines; add newlines after closing block tags (`p`, `div`, `li`, `section`, `article`, `h1–h6`, `tr`).
+  - `strip_tags`, decode HTML entities, normalize NBSP to space.
+  - Remove all tabs; collapse multiple spaces; ensure at most one blank line between paragraphs.
+  - Trim trailing spaces per line.
+- Phrase/line removals in `removeCtaPhrases()`:
+  - Menus/section labels: `overview`, `features`, `reviews`, `faq(s)`, `frequently asked questions`, “as seen on”, “viral on TikTok”.
+  - Offers/promotions: `offer|deal|exclusive offer|early bird|promotion|promo|sale|today only|limited time`, percentage-off patterns, and `buy/order/add to cart/checkout` lines.
+  - Ratings/reviews: lines like `4.8/5 12,345 verified reviews`, `(12,345 verified reviews)`, `verified buyer`.
+  - Shipping/stock/logistics: `ship/shipping/stock level/low stock/backorder/dispatch/deliver/arrives/USPS/FedEx/UPS/DHL/tracking/warehouse`.
+  - Guarantees: `money-back guarantee`, `30-day money back guarantee` (with variants).
+  - Dates: ISO `YYYY-MM-DD` and common month-name formats.
+  - Emojis/symbols: remove arrows, stars, checkmarks, pictographs.
+  - Separator-only and punctuation-only lines.
+
+
 ## Tests & Quality
 
 - Run tests: `php artisan test`
@@ -73,7 +95,8 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
 
 - Use Filament 4 Schemas for forms/infolists for forward-compatibility.
 - Prefer source-only extraction to avoid JS/UX hiding content.
-- Preserve newlines, collapse only spaces/tabs; avoid over-trimming text.
+- Preserve newlines, remove tabs, and collapse multiple spaces; avoid over-trimming text.
+- Preserve FAQ `Q:`/`A:` lines extracted from accordion UI.
 - CTA phrase removal using conservative regexes to minimize false positives.
 
 ## Roadmap

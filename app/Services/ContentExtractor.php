@@ -79,33 +79,78 @@ class ContentExtractor
     private function toText(string $html): string
     {
         // Convert HTML to plaintext while preserving paragraphs
+        // Remove <script>...</script> blocks including their contents
+        $html = preg_replace('/<script\b[^>]*>.*?<\/script>/is', '', $html);
         // First, normalize <br> tags to newlines
         $text = preg_replace('/<br\s*\/?\s*>/i', "\n", $html);
         // Add newlines after common block-level closing tags
         $text = preg_replace('/<\/(p|div|li|section|article|h[1-6]|tr)>/i', "$0\n", $text);
         $text = strip_tags($text);
         $text = html_entity_decode($text, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-        // Normalize whitespace
-        $text = preg_replace('/\n{3,}/', "\n\n", $text);
-        $text = preg_replace('/[\t\x{00A0}]+/u', ' ', $text);
+        // Normalize whitespace: ensure at most one blank line between paragraphs
+        $text = preg_replace('/\n{2,}/', "\n\n", $text);
+        // Remove all tab characters completely
+        $text = preg_replace('/\t+/', '', $text);
+        // Normalize non-breaking spaces to regular spaces
+        $text = preg_replace('/[\x{00A0}]+/u', ' ', $text);
         // Collapse repeated spaces/tabs but preserve newlines
-        $text = preg_replace('/[ \t\x{00A0}]{2,}/u', ' ', $text);
+        $text = preg_replace('/[ \x{00A0}]{2,}/u', ' ', $text);
         return trim($text);
     }
 
     private function removeCtaPhrases(string $text): string
     {
+        // Remove emojis, arrows, and decorative symbols (e.g., 👉, ★, ✓, arrows)
+        $text = preg_replace('/[\x{1F1E6}-\x{1F1FF}\x{1F300}-\x{1F6FF}\x{1F900}-\x{1F9FF}\x{2600}-\x{26FF}\x{2700}-\x{27BF}\x{2190}-\x{21FF}\x{2300}-\x{23FF}]+/u', '', $text);
+
         $patterns = [
-            '/order\s*now.*$/mi',
-            '/buy\s*now.*$/mi',
-            '/add\s*to\s*cart.*$/mi',
-            '/checkout.*$/mi',
-            '/discount.*$/mi',
-            '/coupon.*$/mi',
-            '/shipping.*$/mi',
-            '/free\s*shipping.*$/mi',
+            // Remove any remaining <script>...</script> blocks including their contents (fallback)
+            '/<script\b[^>]*>.*?<\/script>/is',
+
+            // Menus / section labels
+            '/^\s*(overview|features|reviews|faqs?)\s*$/mi',
+            '/^\s*frequently\s+asked\s+questions\s*$/mi',
+            '/^.*\bas\s*seen\s*on\b.*$/mi',
+            '/^.*\bviral\s+on\s+tiktok\b.*$/mi',
+
+            // Offers / promotions / discounts
+            '/^.*\b(offer|deal|exclusive\s*offer|early\s*bird|promotion|promo|sale|today\s*only|limited\s*time)\b.*$/mi',
+            '/^.*\b(\d{1,3}%\s*off|up\s*to\s*\d{1,3}%\s*off|get\s*(up\s*to\s*)?\d{1,3}%\s*off)\b.*$/mi',
+            '/^.*\b(buy\s*now|order\s*now|add\s*to\s*cart|checkout)\b.*$/mi',
+            '/^\s*off\s*$/mi',
+
+            // Ratings / reviews counts
+            '/^.*\b\d(\.\d+)?\s*\/\s*5\b.*(verified\s*reviews?|reviews?|ratings?)\b.*$/mi',
+            '/^.*\(\s*\d{1,3}(,\d{3})*\s*verified\s*reviews\s*\)\s*$/mi',
+            '/^.*\bverified\s*buyer\b.*$/mi',
+
+            // Shipping / stock lines (including carriers and logistics terms)
+            '/^.*\b(ship(s|ped|ping)?(\s+by)?|stock\s*level|low\s*stock|back\s*order|backorder|dispatch|deliver(y|ies)|arrives?|usps|fedex|ups|dhl|tracking|warehouse)\b.*$/mi',
+
+            // Guarantees
+            '/^.*\b(\d{1,3}\s*[-–—]?\s*day\s*money\s*[-–—]?\s*back\s*guarantee|money\s*back\s*guarantee)\b.*$/mi',
+
+            // Dates
+            '/^.*\b\d{4}-\d{2}-\d{2}\b.*$/m',
+            '/^.*\b(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(t(ember)?)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)\s+\d{1,2}(st|nd|rd|th)?(,\s*\d{2,4})?\b.*$/mi',
+            '/^.*\b\d{1,2}(st|nd|rd|th)?\s+(Jan(uary)?|Feb(ruary)?|Mar(ch)?|Apr(il)?|May|Jun(e)?|Jul(y)?|Aug(ust)?|Sep(t(ember)?)?|Oct(ober)?|Nov(ember)?|Dec(ember)?)(,?\s*\d{2,4})?\b.*$/mi',
         ];
-        return preg_replace($patterns, '', $text) ?? $text;
+
+        $text = preg_replace($patterns, '', $text) ?? $text;
+
+        // Remove decorative separator-only lines
+        $text = preg_replace('/^\s*[-–—•·*]+\s*$/m', '', $text);
+
+        // Remove lines that are only punctuation/brackets common in JS blocks
+        $text = preg_replace('/^\s*[\{\}\(\);\[\]\.,\|]+\s*$/m', '', $text);
+
+        // Trim trailing spaces per line
+        $text = preg_replace('/[ \t]+$/m', '', $text);
+
+        // Ensure at most a single blank line between paragraphs
+        $text = preg_replace('/\n{2,}/', "\n\n", $text);
+
+        return $text;
     }
 
     private function extractTitle(string $html): ?string

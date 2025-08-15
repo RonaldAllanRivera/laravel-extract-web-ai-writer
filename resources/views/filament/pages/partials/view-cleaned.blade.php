@@ -3,5 +3,5 @@
     <p class="mb-4">{{ $record->url }}</p>
 
     <h3 class="text-lg font-semibold mb-2">Cleaned Content</h3>
-    <pre class="whitespace-pre-wrap text-sm">{{ $record->cleaned_text }}</pre>
+    <div class="text-sm whitespace-pre-line">{{ $record->cleaned_text }}</div>
 </div>
