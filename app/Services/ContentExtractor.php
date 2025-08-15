@@ -172,6 +172,25 @@ class ContentExtractor
         return $text;
     }
 
+    /**
+     * Re-run conservative cleaning on already extracted plaintext.
+     * Useful when adjusting cleaning rules without refetching HTML.
+     */
+    public function recleanText(string $text): string
+    {
+        // Apply CTA/footer/etc. phrase cleanup
+        $text = $this->removeCtaPhrases($text);
+
+        // Normalize whitespace similar to toText() finishing steps
+        $text = preg_replace('/\n{2,}/', "\n\n", $text ?? '') ?? '';
+        $text = preg_replace('/\t+/', '', $text) ?? '';
+        $text = preg_replace('/[\x{00A0}]+/u', ' ', $text) ?? '';
+        $text = preg_replace('/[ \x{00A0}]{2,}/u', ' ', $text) ?? '';
+        $text = preg_replace('/[ \t]+$/m', '', $text) ?? '';
+
+        return trim($text);
+    }
+
     private function extractTitle(string $html): ?string
     {
         try {

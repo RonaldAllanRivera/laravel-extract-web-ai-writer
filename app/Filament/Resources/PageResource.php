@@ -10,6 +10,10 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Filament\Schemas\Schema;
 use Filament\Infolists\Components\TextEntry;
+use App\Services\ContentExtractor;
+use Filament\Notifications\Notification;
+use Illuminate\Support\Collection;
+use Filament\Actions\BulkAction;
 
 class PageResource extends Resource
 {
@@ -24,7 +28,59 @@ class PageResource extends Resource
                 TextColumn::make('created_at')->dateTime()->sortable(),
             ])
             ->recordUrl(fn (PageModel $record) => static::getUrl('view', ['record' => $record]))
-            ->defaultSort('created_at', 'desc');
+            ->defaultSort('created_at', 'desc')
+            ->bulkActions([
+                BulkAction::make('reclean')
+                    ->label('Re-clean selected')
+                    ->tooltip('Re-run the cleaner on already stored text. No network requests. Use after updating cleaning rules or to normalize spacing/boilerplate removal.')
+                    ->action(function (Collection $records) {
+                        $extractor = new ContentExtractor();
+                        $updated = 0;
+                        $errors = 0;
+                        foreach ($records as $page) {
+                            try {
+                                $page->cleaned_text = $extractor->recleanText($page->cleaned_text ?? '');
+                                $page->save();
+                                $updated++;
+                            } catch (\Throwable $e) {
+                                $errors++;
+                            }
+                        }
+                        Notification::make()
+                            ->title("Re-cleaned {$updated} record(s)")
+                            ->body($errors ? "{$errors} error(s) occurred." : null)
+                            ->success()
+                            ->send();
+                    }),
+                BulkAction::make('refetch_reclean')
+                    ->label('Refetch & re-clean selected')
+                    ->tooltip('Download pages again, then apply cleaner. Updates cleaned_text and possibly meta.title. Slower; obeys HTTP guardrails (2xx, HTML/XHTML, size limits, redirects).')
+                    ->action(function (Collection $records) {
+                        $extractor = new ContentExtractor();
+                        $updated = 0;
+                        $errors = 0;
+                        foreach ($records as $page) {
+                            try {
+                                $data = $extractor->extract($page->url);
+                                $page->cleaned_text = $data['cleaned_text'] ?? '';
+                                $meta = $page->meta ?? [];
+                                if (!empty($data['title'])) {
+                                    $meta['title'] = $data['title'];
+                                }
+                                $page->meta = $meta;
+                                $page->save();
+                                $updated++;
+                            } catch (\Throwable $e) {
+                                $errors++;
+                            }
+                        }
+                        Notification::make()
+                            ->title("Refetched & re-cleaned {$updated} record(s)")
+                            ->body($errors ? "{$errors} error(s) occurred." : null)
+                            ->success()
+                            ->send();
+                    }),
+            ]);
     }
 
     public static function infolist(Schema $schema): Schema

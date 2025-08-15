@@ -19,6 +19,8 @@ Built for fast operator workflows in an admin panel, with copy-friendly views an
 - **Filament v4 Admin**: Tables for quick review; record view shows copyable content with line breaks (nl2br) and normal whitespace (no pre-wrap).
 - **Ready for AI**: Data model and flow designed to plug prompts for interstitial/advertorial generation.
  - **Duplicate-safe storage**: URL upsert prevents duplicate `pages` records; unique index on `pages.url`.
+ - **Admin bulk actions**: "Re-clean selected" and "Refetch & re-clean selected" for fast batch processing.
+ - **Inline admin help**: A small widget explains when to use each bulk action; actions also include tooltips.
 
 ## Tech Stack
 
@@ -67,6 +69,34 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
 - Go to `Admin > Extract Content`, paste a URL, submit.
 - Open `Admin > Pages`, click a row to view.
 - Copy cleaned text from the View page.
+
+### Admin bulk actions (Pages list)
+
+- **Re-clean selected**
+  - Re-runs the cleaner on the already stored text.
+  - No network calls. Fast and safe.
+  - Use after changing cleaning rules or to normalize spacing/boilerplate removal.
+
+- **Refetch & re-clean selected**
+  - Downloads the page again, then applies the cleaner.
+  - Updates `cleaned_text` and may update `meta.title`.
+  - Slower; obeys HTTP guardrails (2xx only, HTML/XHTML content types, size limits, redirects followed).
+
+Tip: A help box is shown above the table summarizing these options, and tooltips are available on hover.
+
+### CLI utilities
+
+- Re-clean existing records (no refetch):
+
+  ```bash
+  php artisan pages:reclean
+  ```
+
+- Refetch from the network and re-clean:
+
+  ```bash
+  php artisan pages:reclean --refetch
+  ```
 
 ## Cleaning rules
 

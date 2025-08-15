@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
+## [0.1.3] - 2025-08-15
+
+### Added
+- Filament bulk actions on `PageResource`:
+  - "Re-clean selected" (re-run cleaner on stored text, no network).
+  - "Refetch & re-clean selected" (download again, then clean; updates `cleaned_text` and may update `meta.title`).
+- Inline admin help widget explaining when to use each bulk action, plus tooltips on the actions.
+- Artisan command `pages:reclean {--refetch}` to batch re-clean all pages from CLI.
+
+### Fixed
+- Resolve Filament v4 namespace and API for bulk actions (`Filament\\Actions\\BulkAction`) and widget property signatures (`$view` non-static, `$sort` static).
+
+### Documentation
+- README updates covering bulk actions, the help widget, and the `pages:reclean` command.
+
 ## [0.1.2] - 2025-08-15
 
 ### Added
