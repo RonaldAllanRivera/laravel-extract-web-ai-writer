@@ -98,6 +98,25 @@ php artisan view:clear
 php artisan optimize
 ```
 
+### AI output formatting (Section 10 - Features)
+
+- Feature titles in bold followed by a description on the next line are merged into a single, compact list item.
+- Works with or without a leading bullet and even if a blank line exists between the title and description.
+- Example:
+
+```
+**Heat Therapy**
+Provides gentle warmth to relax and soothe.
+
+* **Massage Function**
+Mimics professional massage techniques for relief.
+```
+
+Renders as:
+
+• Heat Therapy Provides gentle warmth to relax and soothe.
+• Massage Function Mimics professional massage techniques for relief.
+
 ### Admin bulk actions (Pages list)
 
 - **Re-clean selected**

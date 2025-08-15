@@ -12,9 +12,10 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ### Fixed
 - Interstitial table rendering: convert single-asterisk emphasis `*text*` to `<em>` in `AiContentFormatter::toHtmlTable()` so lines like `*Feel the difference with every session!*` render correctly.
+ - Features list (Section 10): pair bold feature title + next description into one compact list item; tighten spacing and avoid extra `<br>` inside lists.
 
 ### Documentation
-- README: add AI generation settings, cache clear commands, and export guidance (mysqldump/HeidiSQL).
+- README: add AI generation settings, cache clear commands, Section 10 features formatting behavior, and export guidance (mysqldump/HeidiSQL).
 - `.env.example`: update token defaults and set `AI_LAYOUT_INTERSTITIAL_MAX_TOKENS=2200`.
 
 ## [0.1.3] - 2025-08-15

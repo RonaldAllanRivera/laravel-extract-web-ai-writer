@@ -43,8 +43,20 @@ class AiContentFormatter
             $body = preg_replace('/^---+$/m', '', $body);
             $body = trim($body);
 
+            // Section-specific normalization: For section 10 (Features),
+            // pair lines like "**Title**" followed by a description line into a single bullet
+            if ((string) $sectionNum === '10') {
+                $body = self::normalizeFeaturePairs($body);
+            }
+
             // Convert bullet lists * ... to <ul>
             $body = self::bulletsToHtml($body);
+
+            // For section 10, render features as compact, bullet-less list items
+            if ((string) $sectionNum === '10') {
+                $body = preg_replace('/<ul(\s+[^>]*)?>/i', '<ul style="list-style:none;margin:0;padding-left:0">', $body);
+                $body = str_replace('<li>', '<li style="margin:2px 0">', $body);
+            }
 
             // Convert bold markers **text** to <strong>
             $body = preg_replace('/\*\*(.*?)\*\*/s', '<strong>$1</strong>', $body);
@@ -53,8 +65,10 @@ class AiContentFormatter
             // Avoid matching bold (** **) or bullets (* ) by ensuring no adjacent asterisks and no immediate space after the opening asterisk
             $body = preg_replace('/(?<!\*)\*(?!\s)([^\*]+?)\*(?!\*)/s', '<em>$1</em>', $body);
 
-            // Convert remaining newlines to <br>
-            $body = nl2br($body);
+            // Convert remaining newlines to <br> only if body is plain text (no list HTML)
+            if (stripos($body, '<ul') === false && stripos($body, '<ol') === false) {
+                $body = nl2br($body);
+            }
 
             $label = htmlspecialchars($sectionNum . '. ' . $sectionTitle, ENT_QUOTES, 'UTF-8');
 
@@ -92,6 +106,58 @@ class AiContentFormatter
             $out[] = '</ul>';
         }
 
+        return implode("\n", $out);
+    }
+
+    /**
+     * Normalize Feature pairs for section 10 by converting:
+     *   **Title**\nDescription
+     * into a single bullet line:
+     *   * **Title** Description
+     */
+    private static function normalizeFeaturePairs(string $text): string
+    {
+        $lines = explode("\n", $text);
+        $out = [];
+        $count = count($lines);
+        for ($i = 0; $i < $count; $i++) {
+            $line = $lines[$i];
+            // Case A: Bold-only title line
+            if (preg_match('/^\s*\*\*(.+?)\*\*\s*$/', $line, $m)) {
+                // Find next non-empty line (skip blank lines)
+                $j = $i + 1;
+                while ($j < $count && trim($lines[$j]) === '') {
+                    $j++;
+                }
+                $next = $lines[$j] ?? '';
+                $nextTrim = trim($next);
+                // Next line must be a plain description (not another heading/bullet/label)
+                if ($nextTrim !== ''
+                    && !preg_match('/^\s*(\*\s+|\*\*|##|\-\s+)/', $nextTrim)
+                    && stripos($nextTrim, 'Features Body:') !== 0) {
+                    $out[] = '* **' . trim($m[1]) . '** ' . $nextTrim;
+                    $i = $j; // consume up to the description line
+                    continue;
+                }
+            }
+            // Case B: Bullet with bold title line
+            if (preg_match('/^\s*\*\s+\*\*(.+?)\*\*\s*$/', $line, $m)) {
+                $j = $i + 1;
+                while ($j < $count && trim($lines[$j]) === '') {
+                    $j++;
+                }
+                $next = $lines[$j] ?? '';
+                $nextTrim = trim($next);
+                if ($nextTrim !== ''
+                    && !preg_match('/^\s*(\*\s+|\*\*|##|\-\s+)/', $nextTrim)
+                    && stripos($nextTrim, 'Features Body:') !== 0) {
+                    $out[] = '* **' . trim($m[1]) . '** ' . $nextTrim;
+                    $i = $j;
+                    continue;
+                }
+            }
+            $out[] = $line;
+        }
         return implode("\n", $out);
     }
 
