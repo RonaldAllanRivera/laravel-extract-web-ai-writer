@@ -88,6 +88,7 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
   - Persists fetch metadata on success or failure (status, length, error snippet, fetched timestamp).
 
  Tip: Click the help icon (“?”) in the header to open a modal summarizing these options. Tooltips are available on hover.
+ Notifications show error counts and use danger styling if any errors occurred.
 
 ### CLI utilities
 
@@ -108,6 +109,7 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
 
 - Use the `HTTP` badge color to quickly spot failures (red for non-2xx, gray for unknown).
 - Apply the "Fetch failed" filter to target rows with recorded errors or non-2xx statuses.
+ - Hover the `HTTP` badge to view details (status, bytes, fetched time, or the error message when failed).
 
 ## Cleaning rules
 

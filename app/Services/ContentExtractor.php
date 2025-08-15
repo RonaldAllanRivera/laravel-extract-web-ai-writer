@@ -20,27 +20,37 @@ class ContentExtractor
             ],
         ]);
 
-        $response = $client->get($url);
+        try {
+            $response = $client->get($url);
+        } catch (\Throwable $e) {
+            // Surface clear network error for UI/CLI and persistable fetch_error
+            throw new \RuntimeException('Network error: ' . $e->getMessage(), 0, $e);
+        }
 
         $status = $response->getStatusCode();
         if ($status < 200 || $status >= 300) {
             // Attach HTTP status as exception code for callers to persist
-            throw new \RuntimeException("Request failed (HTTP {$status}).", $status);
+            $reason = trim($response->getReasonPhrase() ?? '');
+            $reasonText = $reason !== '' ? " {$reason}" : '';
+            throw new \RuntimeException("Request failed (HTTP {$status}{$reasonText}).", $status);
         }
 
         $contentType = strtolower($response->getHeaderLine('Content-Type'));
         if ($contentType && !str_contains($contentType, 'text/html') && !str_contains($contentType, 'application/xhtml+xml')) {
-            throw new \RuntimeException('The URL did not return HTML content.');
+            throw new \RuntimeException('Non-HTML content-type: ' . $contentType);
         }
 
         $body = $response->getBody();
         $size = $body->getSize();
         if ($size !== null && $size > 3 * 1024 * 1024) { // > 3 MB
-            throw new \RuntimeException('The page is too large to process.');
+            throw new \RuntimeException('The page is too large to process (' . number_format($size) . ' bytes).');
         }
         $html = (string) $body;
         if ($size === null) {
             $size = strlen($html);
+        }
+        if ($size > 3 * 1024 * 1024) { // enforce after computing
+            throw new \RuntimeException('The page is too large to process (' . number_format($size) . ' bytes).');
         }
 
         // Clean and reduce to <body> content only (remove HTML/JS)

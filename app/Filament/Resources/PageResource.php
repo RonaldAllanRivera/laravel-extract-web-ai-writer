@@ -30,7 +30,21 @@ class PageResource extends Resource
                     ->label('HTTP')
                     ->sortable()
                     ->badge()
-                    ->color(fn ($state) => $state === null ? 'gray' : (($state >= 200 && $state < 300) ? 'success' : 'danger')),
+                    ->color(fn ($state) => $state === null ? 'gray' : (($state >= 200 && $state < 300) ? 'success' : 'danger'))
+                    ->tooltip(function (PageModel $record) {
+                        $status = $record->http_status;
+                        $len = $record->content_length;
+                        $when = $record->last_fetched_at ? $record->last_fetched_at->toDateTimeString() : null;
+                        if (!empty($record->fetch_error)) {
+                            $head = 'HTTP ' . ($status !== null ? $status : '—') . ($when ? ' • ' . $when : '');
+                            return trim($head . "\n" . $record->fetch_error);
+                        }
+                        $parts = [];
+                        $parts[] = 'HTTP ' . ($status !== null ? $status : '—');
+                        if ($len) { $parts[] = number_format($len) . ' B'; }
+                        if ($when) { $parts[] = $when; }
+                        return implode(' • ', $parts);
+                    }),
                 TextColumn::make('last_fetched_at')->label('Fetched')->dateTime()->sortable(),
                 TextColumn::make('created_at')->dateTime()->sortable(),
             ])
@@ -68,11 +82,11 @@ class PageResource extends Resource
                                 $errors++;
                             }
                         }
-                        Notification::make()
+                        $note = Notification::make()
                             ->title("Re-cleaned {$updated} record(s)")
-                            ->body($errors ? "{$errors} error(s) occurred." : null)
-                            ->success()
-                            ->send();
+                            ->body($errors ? "{$errors} error(s) occurred." : null);
+                        if ($errors) { $note->danger(); } else { $note->success(); }
+                        $note->send();
                     }),
                 BulkAction::make('refetch_reclean')
                     ->label('Refetch & re-clean selected')
@@ -109,11 +123,11 @@ class PageResource extends Resource
                                 $errors++;
                             }
                         }
-                        Notification::make()
+                        $note = Notification::make()
                             ->title("Refetched & re-cleaned {$updated} record(s)")
-                            ->body($errors ? "{$errors} error(s) occurred." : null)
-                            ->success()
-                            ->send();
+                            ->body($errors ? "{$errors} error(s) occurred." : null);
+                        if ($errors) { $note->danger(); } else { $note->success(); }
+                        $note->send();
                     }),
             ]);
     }

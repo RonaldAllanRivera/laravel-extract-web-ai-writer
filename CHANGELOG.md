@@ -17,6 +17,12 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
  - Pages admin UI shows HTTP badge and Fetched timestamp; adds a "Fetch failed" filter; detail view shows metadata and error.
  - CLI `pages:reclean --refetch` and bulk refetch action persist success/failure metadata (status, length, error, timestamp).
 
+### Changed
+- Error surfacing improvements:
+  - HTTP badge includes a tooltip with status, bytes, fetched time, or the recorded error message.
+  - Bulk action notifications use danger styling when any errors occur and include error counts.
+  - Extractor exceptions are clearer: include HTTP reason phrase (e.g., 404 Not Found), network error messages, non-HTML content-type, and oversized page size in bytes.
+
 ### Fixed
 - Resolve Filament v4 namespace and API for bulk actions (`Filament\\Actions\\BulkAction`) and widget property signatures (`$view` non-static, `$sort` static).
 
