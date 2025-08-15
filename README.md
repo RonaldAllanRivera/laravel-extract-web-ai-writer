@@ -20,7 +20,7 @@ Built for fast operator workflows in an admin panel, with copy-friendly views an
 - **Ready for AI**: Data model and flow designed to plug prompts for interstitial/advertorial generation.
  - **Duplicate-safe storage**: URL upsert prevents duplicate `pages` records; unique index on `pages.url`.
  - **Admin bulk actions**: "Re-clean selected" and "Refetch & re-clean selected" for fast batch processing.
- - **Inline admin help**: A small widget explains when to use each bulk action; actions also include tooltips.
+ - **Help via header icon**: Click the “?” icon to open a modal explaining when to use each bulk action; actions also include tooltips.
 
 ## Tech Stack
 
@@ -82,7 +82,7 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
   - Updates `cleaned_text` and may update `meta.title`.
   - Slower; obeys HTTP guardrails (2xx only, HTML/XHTML content types, size limits, redirects followed).
 
-Tip: A help box is shown above the table summarizing these options, and tooltips are available on hover.
+ Tip: Click the help icon (“?”) in the header to open a modal summarizing these options. Tooltips are available on hover.
 
 ### CLI utilities
 

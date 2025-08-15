@@ -10,7 +10,7 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 - Filament bulk actions on `PageResource`:
   - "Re-clean selected" (re-run cleaner on stored text, no network).
   - "Refetch & re-clean selected" (download again, then clean; updates `cleaned_text` and may update `meta.title`).
-- Inline admin help widget explaining when to use each bulk action, plus tooltips on the actions.
+- Header help icon opens a modal explaining when to use each bulk action; actions include tooltips.
 - Artisan command `pages:reclean {--refetch}` to batch re-clean all pages from CLI.
 
 ### Fixed
