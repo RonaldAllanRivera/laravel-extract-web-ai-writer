@@ -24,7 +24,8 @@ class ContentExtractor
 
         $status = $response->getStatusCode();
         if ($status < 200 || $status >= 300) {
-            throw new \RuntimeException("Request failed (HTTP {$status}).");
+            // Attach HTTP status as exception code for callers to persist
+            throw new \RuntimeException("Request failed (HTTP {$status}).", $status);
         }
 
         $contentType = strtolower($response->getHeaderLine('Content-Type'));
@@ -38,6 +39,9 @@ class ContentExtractor
             throw new \RuntimeException('The page is too large to process.');
         }
         $html = (string) $body;
+        if ($size === null) {
+            $size = strlen($html);
+        }
 
         // Clean and reduce to <body> content only (remove HTML/JS)
         $bodyHtml = $this->stripNoiseWithCrawler($html);
@@ -51,6 +55,8 @@ class ContentExtractor
         return [
             'cleaned_text' => trim($contentText),
             'title' => $this->extractTitle($html),
+            'http_status' => $status,
+            'content_length' => $size,
         ];
     }
 

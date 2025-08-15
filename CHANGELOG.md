@@ -12,12 +12,16 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
   - "Refetch & re-clean selected" (download again, then clean; updates `cleaned_text` and may update `meta.title`).
 - Header help icon opens a modal explaining when to use each bulk action; actions include tooltips.
 - Artisan command `pages:reclean {--refetch}` to batch re-clean all pages from CLI.
+ - Fetch metadata capture for pages: `last_fetched_at`, `http_status`, `content_length`, `fetch_error` (migration + model casts).
+ - ContentExtractor now returns `http_status` and `content_length` on success; exceptions carry HTTP status code on non-2xx.
+ - Pages admin UI shows HTTP badge and Fetched timestamp; adds a "Fetch failed" filter; detail view shows metadata and error.
+ - CLI `pages:reclean --refetch` and bulk refetch action persist success/failure metadata (status, length, error, timestamp).
 
 ### Fixed
 - Resolve Filament v4 namespace and API for bulk actions (`Filament\\Actions\\BulkAction`) and widget property signatures (`$view` non-static, `$sort` static).
 
 ### Documentation
-- README updates covering bulk actions, the help widget, and the `pages:reclean` command.
+- README updates for bulk actions, help modal, fetch metadata fields/columns/filters, and CLI behavior.
 
 ## [0.1.2] - 2025-08-15
 

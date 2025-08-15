@@ -20,7 +20,8 @@ Built for fast operator workflows in an admin panel, with copy-friendly views an
 - **Ready for AI**: Data model and flow designed to plug prompts for interstitial/advertorial generation.
  - **Duplicate-safe storage**: URL upsert prevents duplicate `pages` records; unique index on `pages.url`.
  - **Admin bulk actions**: "Re-clean selected" and "Refetch & re-clean selected" for fast batch processing.
- - **Help via header icon**: Click the “?” icon to open a modal explaining when to use each bulk action; actions also include tooltips.
+- **Help via header icon**: Click the “?” icon to open a modal explaining when to use each bulk action; actions also include tooltips.
+ - **Fetch metadata tracking**: Capture `HTTP` status, `Last Fetched` timestamp, `Content Length`, and any `Fetch Error`. Pages list shows an HTTP badge and fetched time; includes a "Fetch failed" filter. Bulk refetch and CLI persist success/failure details.
 
 ## Tech Stack
 
@@ -35,12 +36,15 @@ Built for fast operator workflows in an admin panel, with copy-friendly views an
   - Uses desktop UA header and a 20s timeout; follows redirects
   - Limits to `<body>`, removes UI chrome; strips `<script>...</script>` before text conversion
   - Converts to plain text and applies `removeCtaPhrases()` (keeps FAQ `Q:`/`A:` lines; fallback `<script>` removal)
-  - Guardrails: require 2xx status, `Content-Type` HTML/XHTML, and <= 3MB body size
+  - Returns fetch metadata: `http_status` and `content_length`
+- Guardrails: require 2xx status, `Content-Type` HTML/XHTML, and <= 3MB body size
 - `app/Filament/Pages/ExtractContent.php`
   - Simple form to submit a URL; upserts a `Page` by URL (updates `cleaned_text` and `meta.title`, preserves `page_type`)
+  - Saves fetch metadata on success: `last_fetched_at`, `http_status`, `content_length`, clears `fetch_error`
 - `app/Filament/Resources/PageResource.php`
   - List view with row click -> View page
   - Infolist shows URL, meta, and copyable `cleaned_text`
+  - Table columns include `HTTP` badge and `Fetched` timestamp; filter "Fetch failed"
 - `app/Models/Page.php` with casts and fillables
  - DB: unique index on `pages.url` (migration deduplicates existing rows by keeping earliest id)
 
@@ -81,6 +85,7 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
   - Downloads the page again, then applies the cleaner.
   - Updates `cleaned_text` and may update `meta.title`.
   - Slower; obeys HTTP guardrails (2xx only, HTML/XHTML content types, size limits, redirects followed).
+  - Persists fetch metadata on success or failure (status, length, error snippet, fetched timestamp).
 
  Tip: Click the help icon (“?”) in the header to open a modal summarizing these options. Tooltips are available on hover.
 
@@ -97,6 +102,12 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
   ```bash
   php artisan pages:reclean --refetch
   ```
+  - Records fetch metadata on success and failure (`last_fetched_at`, `http_status`, `content_length`, `fetch_error`).
+
+### Pages list tips
+
+- Use the `HTTP` badge color to quickly spot failures (red for non-2xx, gray for unknown).
+- Apply the "Fetch failed" filter to target rows with recorded errors or non-2xx statuses.
 
 ## Cleaning rules
 

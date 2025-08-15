@@ -62,6 +62,12 @@ class ExtractContent extends FilamentPage implements HasForms
             $meta['title'] = $result['title'] ?? ($meta['title'] ?? null);
             $page->meta = $meta;
 
+            // Fetch metadata
+            $page->last_fetched_at = now();
+            $page->http_status = $result['http_status'] ?? null;
+            $page->content_length = $result['content_length'] ?? null;
+            $page->fetch_error = null;
+
             if (! $wasExisting) {
                 $page->status = 'extracted';
             }

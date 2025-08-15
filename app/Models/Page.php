@@ -15,9 +15,14 @@ class Page extends Model
         'status',
         'cleaned_text',
         'meta',
+        'last_fetched_at',
+        'http_status',
+        'content_length',
+        'fetch_error',
     ];
 
     protected $casts = [
         'meta' => 'array',
+        'last_fetched_at' => 'datetime',
     ];
 }

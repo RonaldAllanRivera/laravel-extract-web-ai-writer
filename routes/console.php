@@ -4,6 +4,7 @@ use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\Page;
 use App\Services\ContentExtractor;
+use Illuminate\Support\Str;
 
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
@@ -30,6 +31,11 @@ Artisan::command('pages:reclean {--refetch}', function () {
                         $meta['title'] = $data['title'];
                     }
                     $page->meta = $meta;
+                    // Success metadata
+                    $page->last_fetched_at = now();
+                    $page->http_status = $data['http_status'] ?? null;
+                    $page->content_length = $data['content_length'] ?? null;
+                    $page->fetch_error = null;
                 } else {
                     $page->cleaned_text = $extractor->recleanText($page->cleaned_text ?? '');
                 }
@@ -37,6 +43,14 @@ Artisan::command('pages:reclean {--refetch}', function () {
                 $updated++;
             } catch (\Throwable $e) {
                 $errors++;
+                // Failure metadata
+                $page->last_fetched_at = now();
+                $code = (int) ($e->getCode() ?: 0);
+                $page->http_status = $code > 0 ? $code : null;
+                $page->content_length = null;
+                $msg = trim($e->getMessage());
+                $page->fetch_error = Str::limit($msg, 500);
+                $page->save();
                 $this->error("#{$page->id} {$page->url} -> " . $e->getMessage());
             } finally {
                 $processed++;
