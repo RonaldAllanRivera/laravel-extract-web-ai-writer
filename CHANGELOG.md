@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
+## [0.1.5] - 2025-08-16
+
+### Added
+- Admin Page view: collapsible "Original Content (fetched)" box styled like the AI Interstitial box. Default collapsed to reduce clutter; expands to a white panel with black text for readability.
+
+### Fixed
+- Compatibility: replaced unavailable Filament Infolists `Section` with a native HTML `<details>/<summary>` block to prevent class-not-found errors. Restored the native disclosure arrow for clarity.
+
+### Documentation
+- README: added feature bullet and "Page view layout" section documenting AI Interstitial/Advertorial boxes and the collapsible Original Content box.
+
 ## [0.1.4] - 2025-08-15
 
 ### Changed

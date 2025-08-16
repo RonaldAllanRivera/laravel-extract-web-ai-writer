@@ -145,12 +145,6 @@ class PageResource extends Resource
                 TextEntry::make('last_fetched_at')->label('Last Fetched')->dateTime()->placeholder('-'),
                 TextEntry::make('content_length')->label('Content Length')->placeholder('-'),
                 TextEntry::make('fetch_error')->label('Fetch Error')->visible(fn ($record) => !empty($record->fetch_error))->columnSpanFull(),
-                TextEntry::make('cleaned_text')
-                    ->label('Content')
-                    ->copyable()
-                    ->columnSpanFull()
-                    ->html()
-                    ->formatStateUsing(fn ($state) => nl2br(e($state))),
                 TextEntry::make('ai_interstitial')
                     ->label('AI Interstitial')
                     ->placeholder('-')
@@ -181,6 +175,23 @@ class PageResource extends Resource
                     ->columnSpanFull()
                     ->html()
                     ->formatStateUsing(fn ($state) => $state ? AiContentFormatter::toHtmlTable($state, 'advertorial') : null),
+                TextEntry::make('original_content_collapsible')
+                    ->label(' ')
+                    ->columnSpanFull()
+                    ->html()
+                    ->state(fn (PageModel $record) => $record->cleaned_text)
+                    ->formatStateUsing(function ($state) {
+                        $body = $state ? nl2br(e($state)) : '<em>-</em>';
+                        return '<details style="border:1px solid #f59e0b;background:#fffbeb;border-radius:8px;padding:10px;margin:10px 0">'
+                            . '<summary style="display:flex;align-items:center;gap:6px;cursor:pointer">'
+                            . '<span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#fbbf24;color:#78350f;font-size:12px">OC</span>'
+                            . '<span style="font-weight:600;color:#92400e">Original Content (fetched)</span>'
+                            . '</summary>'
+                            . '<div style="margin-top:8px;overflow:auto">'
+                            . '<div style="background:#fff;color:#000;padding:8px;border:1px solid #e5e7eb;border-radius:4px">' . $body . '</div>'
+                            . '</div>'
+                            . '</details>';
+                    }),
             ]);
     }
 

@@ -18,10 +18,11 @@ Built for fast operator workflows in an admin panel, with copy-friendly views an
 - **Text cleaning**: Converts to plaintext, strips `<script>` blocks, preserves paragraphs/line breaks, removes tabs and collapses extra spaces; conservative CTA phrase cleanup.
 - **Filament v4 Admin**: Tables for quick review; record view shows copyable content with line breaks (nl2br) and normal whitespace (no pre-wrap).
 - **Ready for AI**: Data model and flow designed to plug prompts for interstitial/advertorial generation.
- - **Duplicate-safe storage**: URL upsert prevents duplicate `pages` records; unique index on `pages.url`.
- - **Admin bulk actions**: "Re-clean selected" and "Refetch & re-clean selected" for fast batch processing.
+- **Duplicate-safe storage**: URL upsert prevents duplicate `pages` records; unique index on `pages.url`.
+- **Admin bulk actions**: "Re-clean selected" and "Refetch & re-clean selected" for fast batch processing.
 - **Help via header icon**: Click the “?” icon to open a modal explaining when to use each bulk action; actions also include tooltips.
- - **Fetch metadata tracking**: Capture `HTTP` status, `Last Fetched` timestamp, `Content Length`, and any `Fetch Error`. Pages list shows an HTTP badge and fetched time; includes a "Fetch failed" filter. Bulk refetch and CLI persist success/failure details.
+- **Fetch metadata tracking**: Capture `HTTP` status, `Last Fetched` timestamp, `Content Length`, and any `Fetch Error`. Pages list shows an HTTP badge and fetched time; includes a "Fetch failed" filter. Bulk refetch and CLI persist success/failure details.
+- **Collapsible Original Content**: In the Page view, the original fetched text appears in a collapsible box (default collapsed) styled like the AI Interstitial box. Text inside uses black color for readability.
 
 ## Tech Stack
 
@@ -73,6 +74,14 @@ Tip: If you change Filament classes or services, clear caches: `php artisan opti
 - Go to `Admin > Extract Content`, paste a URL, submit.
 - Open `Admin > Pages`, click a row to view.
 - Copy cleaned text from the View page.
+
+#### Page view layout
+
+On the `Pages > View` screen, content is organized for quick review:
+
+- **AI Interstitial (latest)** — rendered as a highlighted table inside a yellow/orange box.
+- **AI Advertorial (latest)** — same highlighted layout.
+- **Original Content (fetched)** — collapsible details/summary in a matching yellow/orange box, collapsed by default to reduce clutter; expanding reveals the original fetched text in a white panel with black text.
 
 ### AI generation settings
 
