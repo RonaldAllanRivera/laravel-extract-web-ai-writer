@@ -1,4 +1,4 @@
-# Laravel Extract Web AI Writer
+# WebText Distiller
 
 A Laravel + Filament admin app that:
 
